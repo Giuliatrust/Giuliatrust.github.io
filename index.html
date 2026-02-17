@@ -6,410 +6,357 @@
 <title>Giulia Trust</title>
 <style>
 :root{
-  --text:#ffffff;
-  --muted:rgba(255,255,255,0.78);
-  --panel:rgba(12,12,14,0.48);
-  --panelBorder:rgba(255,255,255,0.18);
-  --shadow:0 22px 70px rgba(0,0,0,0.55);
-  --radius:22px;
-  --max:1100px;
+  --bg:#07080A;
+  --text:#F2F4F6;
+  --muted:#A7ADB4;
+  --glass: rgba(18,18,20,0.48);
+  --glass2: rgba(18,18,20,0.36);
+  --stroke: rgba(255,255,255,0.16);
+  --stroke2: rgba(255,255,255,0.10);
+  --shadow: 0 24px 70px rgba(0,0,0,0.55);
+  --radius: 26px;
 }
-*{box-sizing:border-box;}
-html{scroll-behavior:smooth;}
+
+*{box-sizing:border-box}
+html,body{height:100%}
 body{
   margin:0;
+  background:var(--bg);
   color:var(--text);
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   line-height:1.45;
-  background:#050507;
 }
-body::before{
+
+.site{
+  position:relative;
+  min-height:100vh;
+  overflow:hidden;
+}
+
+.site::before{
   content:"";
   position:fixed;
   inset:0;
   background-image:url("giulia_fullpage.png");
   background-size:cover;
-  background-position:center;
+  background-position:center top;
   background-repeat:no-repeat;
-  transform:translateZ(0);
+  filter:saturate(1.05) contrast(1.02);
+  opacity:0.40;
+  pointer-events:none;
   z-index:-2;
 }
-body::after{
+
+.site::after{
   content:"";
   position:fixed;
   inset:0;
-  background:linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.72));
+  background: radial-gradient(1200px 800px at 30% 20%, rgba(0,0,0,0.10), rgba(0,0,0,0.70));
+  pointer-events:none;
   z-index:-1;
 }
-.wrap{
-  width:min(var(--max), calc(100% - 40px));
+
+@media (min-aspect-ratio: 16/9){
+  .site::before{
+    background-size:contain;
+    background-position:center top;
+  }
+}
+
+.container{
+  width:min(1180px, calc(100% - 40px));
   margin:0 auto;
 }
-.section{
-  padding:86px 0;
+
+.hero{
+  padding:42px 0 34px;
 }
-.section.tight{padding:54px 0;}
-.glass{
+
+.heroCard{
+  display:grid;
+  grid-template-columns: 120px 1fr;
+  gap:22px;
+  padding:28px;
+  border-radius: var(--radius);
+  background: var(--glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--stroke);
+  box-shadow: var(--shadow);
   position:relative;
-  border-radius:var(--radius);
-  background:var(--panel);
-  border:1px solid var(--panelBorder);
-  box-shadow:var(--shadow);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  overflow:hidden;
-  will-change:transform;
 }
-.glass::before{
+
+.heroCard::before{
   content:"";
   position:absolute;
   inset:0;
-  border-radius:var(--radius);
-  background:linear-gradient(135deg, rgba(255,255,255,0.16), transparent 42%);
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, rgba(255,255,255,0.18), transparent 42%);
   pointer-events:none;
 }
-.glassInner{
-  position:relative;
-  padding:44px;
-}
-.heroGrid{
-  display:grid;
-  grid-template-columns: 170px 1fr;
-  gap:28px;
-  align-items:start;
-}
-.logo{
-  width:170px;
-  height:auto;
-  display:block;
-  border-radius:16px;
-  box-shadow:0 18px 55px rgba(0,0,0,0.45);
-}
-.kicker{
-  font-size:14px;
-  letter-spacing:0.08em;
-  text-transform:uppercase;
-  color:rgba(255,255,255,0.75);
-  margin:0 0 12px 0;
-}
-h1{
-  margin:0 0 14px 0;
-  font-size:44px;
-  line-height:1.05;
-}
-.lead{
-  margin:0;
-  font-size:18px;
-  color:var(--muted);
-  max-width:68ch;
-}
-.pillRow{
-  margin-top:20px;
+
+.logoSlot{
+  width:120px;
+  height:120px;
+  border-radius: 22px;
+  border: 1px solid var(--stroke);
+  background: rgba(10,10,12,0.25);
   display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-}
-.pill{
-  display:inline-flex;
   align-items:center;
-  gap:10px;
-  padding:10px 14px;
-  border-radius:999px;
-  background:rgba(0,0,0,0.28);
-  border:1px solid rgba(255,255,255,0.14);
-  color:rgba(255,255,255,0.88);
-  font-size:14px;
-}
-.divider{
-  padding:26px 0;
-}
-.divider img{
-  display:block;
-  width:100%;
-  height:auto;
-  border-radius:18px;
-  box-shadow:0 18px 60px rgba(0,0,0,0.55);
-}
-.cards{
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap:18px;
-}
-.card{
-  position:relative;
-  border-radius:18px;
-  overflow:hidden;
-  border:1px solid rgba(255,255,255,0.14);
-  background:rgba(10,10,12,0.35);
-  box-shadow:0 18px 55px rgba(0,0,0,0.45);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-.cardMedia{
-  position:relative;
-  aspect-ratio: 16 / 11;
+  justify-content:center;
   overflow:hidden;
 }
-.cardMedia img{
+
+.logo{
   width:100%;
   height:100%;
-  object-fit:cover;
+  object-fit:contain;
   display:block;
-  transform:translateZ(0);
 }
-.cardMedia::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.62));
-}
-.cardBody{
-  padding:16px 16px 18px 16px;
-}
-.cardTitle{
-  margin:0 0 8px 0;
-  font-size:18px;
-}
-.cardText{
-  margin:0;
+
+.kicker{
+  font-size:12px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
   color:rgba(255,255,255,0.78);
-  font-size:14px;
+  margin:0 0 8px;
 }
-.wallBlock{
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap:18px;
-  align-items:stretch;
+
+h1{
+  margin:0 0 12px;
+  font-size: clamp(26px, 3.6vw, 46px);
+  line-height:1.08;
 }
-.wall{
-  position:relative;
-  border-radius:18px;
-  overflow:hidden;
-  border:1px solid rgba(255,255,255,0.14);
-  background:rgba(10,10,12,0.35);
-  box-shadow:0 18px 55px rgba(0,0,0,0.45);
+
+.lead{
+  margin:0 0 18px;
+  color:rgba(255,255,255,0.84);
+  max-width: 72ch;
 }
-.wall img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-}
-.wallOverlay{
-  position:absolute;
-  inset:auto 18px 18px 18px;
-  padding:16px 16px 14px 16px;
-  border-radius:16px;
-  background:rgba(0,0,0,0.35);
-  border:1px solid rgba(255,255,255,0.14);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-.wallOverlay h2{
-  margin:0 0 8px 0;
-  font-size:22px;
-  line-height:1.1;
-}
-.wallOverlay p{
-  margin:0;
-  color:rgba(255,255,255,0.82);
-}
-.ctaRow{
-  margin-top:22px;
+
+.pills{
   display:flex;
   flex-wrap:wrap;
-  gap:12px;
+  gap:10px;
+  margin: 0 0 18px;
 }
-a.btn{
+
+.pill{
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid var(--stroke2);
+  background: rgba(12,12,14,0.22);
+  color:rgba(255,255,255,0.86);
+  font-size:13px;
+}
+
+.actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.btn{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  padding:12px 16px;
-  border-radius:14px;
+  padding:10px 14px;
+  border-radius: 12px;
+  border:1px solid var(--stroke);
+  background: rgba(12,12,14,0.30);
+  color:rgba(255,255,255,0.92);
   text-decoration:none;
-  color:#ffffff;
-  background:rgba(0,0,0,0.32);
-  border:1px solid rgba(255,255,255,0.18);
-  box-shadow:0 14px 40px rgba(0,0,0,0.35);
-}
-a.btn:hover{background:rgba(0,0,0,0.42);}
-.footer{
-  padding:44px 0 70px 0;
-  color:rgba(255,255,255,0.7);
+  font-weight:600;
   font-size:14px;
 }
-@media (max-width: 920px){
-  h1{font-size:36px;}
-  .heroGrid{grid-template-columns: 1fr; }
-  .logo{width:150px;}
-  .glassInner{padding:34px;}
-  .cards{grid-template-columns:1fr;}
-  .wallBlock{grid-template-columns:1fr;}
+
+.btn:hover{
+  background: rgba(12,12,14,0.42);
+}
+
+.section{
+  padding: 18px 0 44px;
+}
+
+.glassPanel{
+  padding: 26px;
+  border-radius: var(--radius);
+  background: var(--glass2);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--stroke2);
+  box-shadow: 0 18px 56px rgba(0,0,0,0.45);
+  position:relative;
+}
+
+.glassPanel::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, rgba(255,255,255,0.14), transparent 45%);
+  pointer-events:none;
+}
+
+.grid3{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 980px){
+  .heroCard{grid-template-columns: 1fr; }
+  .logoSlot{width:110px; height:110px;}
+  .grid3{grid-template-columns: 1fr;}
+}
+
+.card{
+  border-radius: 20px;
+  border: 1px solid var(--stroke2);
+  background: rgba(10,10,12,0.20);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  min-height: 260px;
+}
+
+.cardTop{
+  padding: 14px 16px 10px;
+  font-weight:800;
+  font-size:16px;
+}
+
+.cardImg{
+  height: 150px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background-size: cover;
+  background-position: center;
+}
+
+.cardBody{
+  padding: 12px 16px 16px;
+  color: rgba(255,255,255,0.80);
+  font-size:14px;
+}
+
+.divider{
+  width:100%;
+  border-radius: 26px;
+  border: 1px solid var(--stroke2);
+  background: rgba(10,10,12,0.18);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.35);
+  overflow:hidden;
+  margin: 22px 0 28px;
+}
+
+.divider img{
+  width:100%;
+  height: 180px;
+  object-fit: cover;
+  display:block;
+}
+
+.footer{
+  padding: 26px 0 38px;
+  color: rgba(255,255,255,0.70);
+  font-size:13px;
 }
 </style>
 </head>
+
 <body>
+<div class="site">
 
-<header class="section">
-  <div class="wrap">
-    <div class="glass">
-      <div class="glassInner">
-        <div class="heroGrid">
-          <div>
-            <img class="logo" src="giulia_lego_logo.png" alt="Giulia Trust logo">
+  <header class="hero">
+    <div class="container">
+      <div class="heroCard">
+        <div class="logoSlot">
+          <img class="logo" src="giulia_lego_logo.png" alt="Giulia Trust logo">
+        </div>
+
+        <div>
+          <p class="kicker">Giulia Trust</p>
+
+          <h1>Born from care, created by neurodivergence, for minds navigating a world not designed for them.</h1>
+
+          <p class="lead">
+            Giulia Trust was created by a neurodivergent mind for neurodivergent minds, to help people who struggle in systems built for neurotypical patterns, and to cut through bureaucratic hurdles with clarity, dignity, and practical support.
+          </p>
+
+          <div class="pills">
+            <span class="pill">Accessibility first</span>
+            <span class="pill">Clear pathways</span>
+            <span class="pill">Human dignity</span>
+            <span class="pill">Advocacy that stays with you</span>
           </div>
-          <div>
-            <p class="kicker">Giulia Trust</p>
-            <h1>Born from care, created by neurodivergence, for minds navigating a world not designed for them.</h1>
-            <p class="lead">Giulia Trust was created by a neurodivergent mind for neurodivergent minds, to help people who struggle in systems built for neurotypical patterns, and to cut through bureaucratic hurdles with clarity, dignity, and practical support.</p>
-            <div class="pillRow">
-              <span class="pill">Accessibility first</span>
-              <span class="pill">Clear pathways</span>
-              <span class="pill">Human dignity</span>
-              <span class="pill">Advocacy that stays with you</span>
-            </div>
-            <div class="ctaRow">
-              <a class="btn" href="mailto:info@giuliatrust.org">Email, info@giuliatrust.org</a>
-              <a class="btn" href="#principles">Our blocks</a>
-            </div>
+
+          <div class="actions">
+            <a class="btn" href="mailto:info@giuliatrust.org">Email, info@giuliatrust.org</a>
+            <a class="btn" href="#blocks">Our blocks</a>
           </div>
         </div>
+
       </div>
     </div>
-  </div>
-</header>
+  </header>
 
-<div class="divider">
-  <div class="wrap">
-    <img src="Lego_rainbow.png" alt="Divider">
-  </div>
-</div>
+  <section class="section">
+    <div class="container">
+      <div class="divider">
+        <img src="lego_rainbow.png" alt="Divider">
+      </div>
+    </div>
+  </section>
 
-<section id="principles" class="section tight">
-  <div class="wrap">
-    <div class="glass">
-      <div class="glassInner">
-        <div class="cards">
+  <section class="section" id="blocks">
+    <div class="container">
+      <div class="glassPanel">
+        <div class="grid3">
+
           <article class="card">
-            <div class="cardMedia">
-              <img src="Lego_blue.png" alt="Accessibility">
-            </div>
+            <div class="cardTop">Accessibility</div>
+            <div class="cardImg" style="background-image:url('lego_blue.png')"></div>
             <div class="cardBody">
-              <h3 class="cardTitle">Accessibility</h3>
-              <p class="cardText">Clear routes through forms, processes, and language, so the path is visible, not a guessing game.</p>
+              Clear routes through forms, processes, and language, so the path is visible, not a guessing game.
             </div>
           </article>
 
           <article class="card">
-            <div class="cardMedia">
-              <img src="Lego_red.png" alt="Advocacy">
-            </div>
+            <div class="cardTop">Advocacy</div>
+            <div class="cardImg" style="background-image:url('lego_red.png')"></div>
             <div class="cardBody">
-              <h3 class="cardTitle">Advocacy</h3>
-              <p class="cardText">Standing beside people when the system becomes a wall, and pushing until it opens.</p>
+              Standing beside people when the system becomes a wall, and pushing until it opens.
             </div>
           </article>
 
           <article class="card">
-            <div class="cardMedia">
-              <img src="Lego_yellow.png" alt="Dignity">
-            </div>
+            <div class="cardTop">Dignity</div>
+            <div class="cardImg" style="background-image:url('lego_yellow.png')"></div>
             <div class="cardBody">
-              <h3 class="cardTitle">Dignity</h3>
-              <p class="cardText">Practical support that respects pace, sensory load, and the reality of living inside constant demands.</p>
+              Practical support that respects pace, sensory load, and the reality of living inside constant demands.
             </div>
           </article>
+
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<div class="divider">
-  <div class="wrap">
-    <img src="Lego_blue.png" alt="Divider">
-  </div>
+  <section class="section">
+    <div class="container">
+      <div class="divider">
+        <img src="lego_rainbow.png" alt="Divider">
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      Giulia Trust. Email only, please. Contact: <a href="mailto:info@giuliatrust.org" style="color:rgba(255,255,255,0.90)">info@giuliatrust.org</a>
+    </div>
+  </footer>
+
 </div>
-
-<section class="section tight">
-  <div class="wrap">
-    <div class="glass">
-      <div class="glassInner">
-        <div class="wallBlock">
-          <div class="wall">
-            <img src="Lego_red.png" alt="Born from care">
-            <div class="wallOverlay">
-              <h2>Born from care</h2>
-              <p>Giulia Trust exists because care should not require superhuman stamina, or perfect executive functioning, to access what is already a right.</p>
-            </div>
-          </div>
-          <div class="wall">
-            <img src="Lego_yellow.png" alt="Created by neurodivergence">
-            <div class="wallOverlay">
-              <h2>Created by neurodivergence</h2>
-              <p>We build with the patterns we live, practical, structured, and honest, so support feels legible and safe.</p>
-            </div>
-          </div>
-        </div>
-
-        <div style="height:18px"></div>
-
-        <div class="wallBlock">
-          <div class="wall">
-            <img src="Lego_blue.png" alt="For minds navigating">
-            <div class="wallOverlay">
-              <h2>For minds navigating</h2>
-              <p>A world not designed for them, with fewer traps, fewer hidden rules, and more direct routes to outcomes.</p>
-            </div>
-          </div>
-          <div class="wall">
-            <img src="Lego_rainbow.png" alt="Belonging">
-            <div class="wallOverlay">
-              <h2>Belonging</h2>
-              <p>No performance required, no masking demanded, just clear steps and real support.</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider">
-  <div class="wrap">
-    <img src="Lego_rainbow.png" alt="Divider">
-  </div>
-</div>
-
-<footer class="footer">
-  <div class="wrap">
-    <div class="glass">
-      <div class="glassInner">
-        <p style="margin:0 0 8px 0;"><strong>Contact</strong></p>
-        <p style="margin:0;">Email, <a href="mailto:info@giuliatrust.org" style="color:#ffffff;">info@giuliatrust.org</a></p>
-        <p style="margin:16px 0 0 0;">Giulia Trust, built for clarity, built for humans.</p>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<script>
-(function(){
-  const panels = document.querySelectorAll('.glass');
-  const onScroll = () => {
-    panels.forEach((p) => {
-      const rect = p.getBoundingClientRect();
-      const mid = rect.top + rect.height * 0.5;
-      const v = (mid - window.innerHeight * 0.5) / window.innerHeight;
-      const lift = Math.max(-10, Math.min(10, -v * 10));
-      p.style.transform = 'translateY(' + lift + 'px)';
-    });
-  };
-  window.addEventListener('scroll', onScroll, {passive:true});
-  onScroll();
-})();
-</script>
-
 </body>
 </html>
