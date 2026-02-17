@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Giulia Trust</title>
+
+<meta name="description" content="Giulia Trust. Created by a neurodivergent founder for neurodivergent people. Inclusion, dignity, advocacy and care.">
+<meta name="author" content="Giulia Trust">
+<meta name="contact" content="info@giuliatrust.org">
+<link rel="canonical" href="https://giuliatrust.org">
+
+<style>
+:root{
+ --bg:#0A0B0D;
+ --text:#F2F4F6;
+ --muted:#9BA1A6;
+ --gold:#C9A85C;
+ --cyan:#00C7FF;
+ --card:#111318;
+ --border:#1F2127;
+ --radius:18px;
+}
+
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+ background:var(--bg);
+ color:var(--text);
+ line-height:1.6;
+}
+
+.wrap{
+ width:min(1100px,calc(100% - 40px));
+ margin:auto;
+}
+
+header{
+ border-bottom:1px solid var(--border);
+ background:#0A0B0D;
+}
+
+.nav{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ padding:16px 0;
+}
+
+.brand{
+ display:flex;
+ align-items:center;
+ gap:12px;
+ text-decoration:none;
+ color:var(--text);
+}
+
+.brand img{
+ width:36px;
+ height:36px;
+ object-fit:contain;
+}
+
+.nav a{
+ color:var(--muted);
+ text-decoration:none;
+ margin-left:14px;
+}
+
+.nav a:hover{color:var(--text)}
+
+.hero{
+ padding:60px 0 30px;
+}
+
+.hero_grid{
+ display:grid;
+ grid-template-columns:1.1fr 0.9fr;
+ gap:22px;
+}
+
+@media(max-width:900px){
+ .hero_grid{grid-template-columns:1fr}
+}
+
+.card{
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:var(--radius);
+ overflow:hidden;
+}
+
+.hero_content{
+ padding:28px;
+}
+
+.hero_logo{
+ width:220px;
+ max-width:65%;
+ margin-bottom:18px;
+}
+
+h1{
+ margin:0 0 6px;
+ font-size:2.8rem;
+}
+
+.hero_manifesto{
+ margin:10px 0 18px;
+ font-size:1.2rem;
+ font-weight:600;
+ color:var(--gold);
+ max-width:48ch;
+}
+
+.hero_text{
+ color:var(--muted);
+}
+
+.contact_line{
+ margin-top:18px;
+}
+
+.contact_line a{
+ color:var(--gold);
+ font-weight:700;
+ text-decoration:none;
+}
+
+.frame{
+ aspect-ratio:16/10;
+ overflow:hidden;
+}
+
+.frame img{
+ width:100%;
+ height:100%;
+ object-fit:cover;
+}
+
+.section{
+ margin-top:22px;
+ padding:26px;
+}
+
+.section h2{
+ margin-top:0;
+}
+
+.section p{
+ color:var(--muted);
+}
+
+.visual_grid{
+ margin-top:16px;
+ display:grid;
+ grid-template-columns:repeat(12,1fr);
+ gap:16px;
+}
+
+.visual_card{
+ grid-column:span 6;
+}
+
+@media(max-width:900px){
+ .visual_card{grid-column:span 12}
+}
+
+.visual_frame{
+ aspect-ratio:16/10;
+ overflow:hidden;
+ border-radius:var(--radius);
+ border:1px solid var(--border);
+}
+
+.visual_frame img{
+ width:100%;
+ height:100%;
+ object-fit:cover;
+}
+
+figcaption{
+ color:var(--muted);
+ margin-top:8px;
+ font-size:0.95rem;
+}
+
+footer{
+ border-top:1px solid var(--border);
+ padding:28px 0;
+ color:var(--muted);
+ margin-top:40px;
+}
+footer a{
+ color:var(--gold);
+ text-decoration:none;
+ font-weight:600;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="wrap nav">
+<a class="brand" href="#">
+<img src="img_logo.png" alt="Giulia Trust">
+<strong>Giulia Trust</strong>
+</a>
+
+<nav>
+<a href="#purpose">Purpose</a>
+<a href="#visuals">Vision</a>
+<a href="#contact">Contact</a>
+</nav>
+</div>
+</header>
+
+<section class="hero">
+<div class="wrap hero_grid">
+
+<div class="card hero_content">
+
+<img class="hero_logo" src="img_logo.png" alt="Giulia Trust logo">
+
+<h1>Giulia Trust</h1>
+
+<p class="hero_manifesto">
+Born from care, created by neurodivergence, for minds navigating a world not designed for them.
+</p>
+
+<p class="hero_text">
+Giulia Trust was created after Giulia, as dementia reshaped daily life and revealed how fragile dignity becomes inside complex systems.
+Founded by someone who lives neurodivergence, the Trust exists to support people who struggle not because they lack ability, but because the world around them was never designed with cognitive difference in mind.
+</p>
+
+<p class="contact_line">
+Contact:
+<a href="mailto:info@giuliatrust.org">info@giuliatrust.org</a>
+</p>
+
+</div>
+
+<div class="card">
+<div class="frame">
+<img src="img1.png">
+</div>
+</div>
+
+</div>
+</section>
+
+<main class="wrap">
+
+<section id="purpose" class="card section">
+<h2>Why Giulia Trust exists</h2>
+
+<p>
+The Trust was created by a neurodivergent person for neurodivergent people.
+It exists to help those navigating bureaucratic systems, institutional barriers, and environments built for neurotypical expectations.
+</p>
+
+<p>
+Its mission is simple: reduce friction, restore dignity, and make care, advocacy, and access to systems more humane and more understandable.
+Difference is not treated as deficit, but as perspective.
+</p>
+</section>
+
+<section id="visuals" class="card section">
+<h2>Visual direction</h2>
+
+<div class="visual_grid">
+
+<figure class="visual_card">
+<div class="visual_frame">
+<img src="img2.png">
+</div>
+<figcaption>Inclusion and collective problem solving.</figcaption>
+</figure>
+
+<figure class="visual_card">
+<div class="visual_frame">
+<img src="img3.png">
+</div>
+<figcaption>Dignity, care and future building.</figcaption>
+</figure>
+
+<figure class="visual_card">
+<div class="visual_frame">
+<img src="img4.png">
+</div>
+<figcaption>Advocacy and systemic navigation.</figcaption>
+</figure>
+
+<figure class="visual_card">
+<div class="visual_frame">
+<img src="assets/img/visual_5.png">
+</div>
+<figcaption>Support, accessibility and uplift.</figcaption>
+</figure>
+
+</div>
+</section>
+
+<section id="contact" class="card section">
+<h2>Contact</h2>
+
+<p>
+For collaborations, partnerships, research enquiries or support requests:
+</p>
+
+<p>
+<a href="mailto:info@giuliatrust.org">info@giuliatrust.org</a>
+</p>
+</section>
+
+</main>
+
+<footer>
+<div class="wrap">
+© Giulia Trust · giuliatrust.org ·
+<a href="mailto:info@giuliatrust.org">info@giuliatrust.org</a>
+</div>
+</footer>
+
+</body>
+</html>
