@@ -37,12 +37,13 @@ body{
   content:"";
   position:fixed;
   inset:0;
-  background-image:url("giulia_fullpage.png");
-  background-size:cover;
+  background-image:url("giulia_fullpage.png?v=7");
+  background-size:contain;
   background-position:center top;
   background-repeat:no-repeat;
+  background-color:#05070b;
   filter:saturate(1.05) contrast(1.02);
-  opacity:0.40;
+  opacity:0.55;
   pointer-events:none;
   z-index:-2;
 }
@@ -51,16 +52,9 @@ body{
   content:"";
   position:fixed;
   inset:0;
-  background: radial-gradient(1200px 800px at 30% 20%, rgba(0,0,0,0.10), rgba(0,0,0,0.70));
+  background: radial-gradient(1200px 800px at 30% 20%, rgba(0,0,0,0.08), rgba(0,0,0,0.72));
   pointer-events:none;
   z-index:-1;
-}
-
-@media (min-aspect-ratio: 16/9){
-  .site::before{
-    background-size:contain;
-    background-position:center top;
-  }
 }
 
 .container{
@@ -205,7 +199,7 @@ h1{
 }
 
 @media (max-width: 980px){
-  .heroCard{grid-template-columns: 1fr; }
+  .heroCard{grid-template-columns: 1fr;}
   .logoSlot{width:110px; height:110px;}
   .grid3{grid-template-columns: 1fr;}
 }
@@ -217,7 +211,7 @@ h1{
   overflow:hidden;
   display:flex;
   flex-direction:column;
-  min-height: 260px;
+  min-height: 300px;
 }
 
 .cardTop{
@@ -226,12 +220,23 @@ h1{
   font-size:16px;
 }
 
-.cardImg{
-  height: 150px;
+.cardMedia{
+  height: 190px;
   border-top: 1px solid rgba(255,255,255,0.06);
   border-bottom: 1px solid rgba(255,255,255,0.06);
-  background-size: cover;
-  background-position: center;
+  background: rgba(0,0,0,0.12);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: 10px;
+}
+
+.cardMedia img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+  filter: drop-shadow(0 18px 40px rgba(0,0,0,0.55));
 }
 
 .cardBody{
@@ -272,7 +277,7 @@ h1{
     <div class="container">
       <div class="heroCard">
         <div class="logoSlot">
-          <img class="logo" src="giulia_lego_logo.png" alt="Giulia Trust logo">
+          <img class="logo" src="giulia_lego_logo.png?v=7" alt="Giulia Trust logo">
         </div>
 
         <div>
@@ -304,7 +309,7 @@ h1{
   <section class="section">
     <div class="container">
       <div class="divider">
-        <img src="lego_rainbow.png" alt="Divider">
+        <img src="lego_rainbow.png?v=7" alt="">
       </div>
     </div>
   </section>
@@ -316,7 +321,9 @@ h1{
 
           <article class="card">
             <div class="cardTop">Accessibility</div>
-            <div class="cardImg" style="background-image:url('lego_blue.png')"></div>
+            <div class="cardMedia">
+              <img src="img1.png?v=7" alt="">
+            </div>
             <div class="cardBody">
               Clear routes through forms, processes, and language, so the path is visible, not a guessing game.
             </div>
@@ -324,7 +331,9 @@ h1{
 
           <article class="card">
             <div class="cardTop">Advocacy</div>
-            <div class="cardImg" style="background-image:url('lego_red.png')"></div>
+            <div class="cardMedia">
+              <img src="img2.png?v=7" alt="">
+            </div>
             <div class="cardBody">
               Standing beside people when the system becomes a wall, and pushing until it opens.
             </div>
@@ -332,7 +341,9 @@ h1{
 
           <article class="card">
             <div class="cardTop">Dignity</div>
-            <div class="cardImg" style="background-image:url('lego_yellow.png')"></div>
+            <div class="cardMedia">
+              <img src="img3.png?v=7" alt="">
+            </div>
             <div class="cardBody">
               Practical support that respects pace, sensory load, and the reality of living inside constant demands.
             </div>
@@ -346,7 +357,7 @@ h1{
   <section class="section">
     <div class="container">
       <div class="divider">
-        <img src="lego_rainbow.png" alt="Divider">
+        <img src="lego_rainbow.png?v=7" alt="">
       </div>
     </div>
   </section>
