@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Giulia Trust</title>
+
+<meta name="description" content="Giulia Trust. Created by a neurodivergent founder for neurodivergent people. Inclusion, dignity, advocacy and care.">
+<meta name="author" content="Giulia Trust">
+<meta name="contact" content="info@giuliatrust.org">
+<link rel="canonical" href="https://giuliatrust.org">
+
+<style>
+:root{
+ --bg:#0A0B0D;
+ --text:#F2F4F6;
+ --muted:#9BA1A6;
+ --gold:#C9A85C;
+ --cyan:#00C7FF;
+ --card:#111318;
+ --border:#1F2127;
+ --radius:18px;
+}
+
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+ background:var(--bg);
+ color:var(--text);
+ line-height:1.6;
+}
+
+.wrap{
+ width:min(1100px,calc(100% - 40px));
+ margin:auto;
+}
+
+header{
+ border-bottom:1px solid var(--border);
+ background:#0A0B0D;
+}
+
+.nav{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ padding:16px 0;
+}
+
+.brand{
+ display:flex;
+ align-items:center;
+ gap:12px;
+ text-decoration:none;
+ color:var(--text);
+}
+
+.brand img{
+ width:36px;
+ height:36px;
+ object-fit:contain;
+}
+
+.nav a{
+ color:var(--muted);
+ text-decoration:none;
+ margin-left:14px;
+}
+
+.nav a:hover{color:var(--text)}
+
+.hero{
+ padding:60px 0 30px;
+}
+
+.hero_grid{
+ display:grid;
+ grid-template-columns:1.1fr 0.9fr;
+ gap:22px;
+}
+
+@media(max-width:900px){
+ .hero_grid{grid-template-columns:1fr}
+}
+
+.card{
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:var(--radius);
+ overflow:hidden;
+}
+
+.hero_content{
+ padding:28px;
+}
+
+.hero_logo{
+ width:220px;
+ max-width:65%;
+ margin-bottom:18px;
+}
+
+h1{
+ margin:0 0 6px;
+ font-size:2.8rem;
+}
+
+.hero_manifesto{
+ margin:10px 0 18px;
+ font-size:1.2rem;
+ font-weight:600;
+ color:var(--gold);
+ max-width:48ch;
+}
+
+.hero_text{
+ color:var(--muted);
+}
+
+.contact_line{
+ margin-top:18px;
+}
+
+.contact_line a{
+ color:var(--gold);
+ font-weight:700;
+ text-decoration:none;
+}
+
+.frame{
+ aspect-ratio:16/10;
+ overflow:hidden;
+}
+
+.frame img{
+ width:100%;
+ height:100%;
+ object-fit:contain;
+ background:#0A0B0D;
+}
+
+.section{
+ margin-top:22px;
+ padding:26px;
+}
+
+.section h2{
+ margin-top:0;
+}
+
+.section p{
+ color:var(--muted);
+}
+
+.visual_grid{
+ margin-top:16px;
+ display:grid;
+ grid-template-columns:repeat(12,1fr);
+ gap:16px;
+}
+
+.visual_card{
+ grid-column:span 6;
+}
+
+@media(max-width:900px){
+ .visual_card{grid-column:span 12}
+}
+
+.visual_frame{
+ aspect-ratio:16/10;
+ overflow:hidden;
+ border-radius:var(--radius);
+ border:1px solid var(--border);
+}
+
+.visual_frame img{
+ width:100%;
+ height:100%;
+ object-fit:cover;
+}
+
+figcaption{
+ color:var(--muted);
+ margin-top:8px;
+ font-size:0.95rem;
+}
+
+footer{
+ border-top:1px solid var(--border);
+ padding:28px 0;
+ color:var(--muted);
+ margin-top:40px;
+}
+footer a{
+ color:var(--gold);
+ text-decoration:none;
+ font-weight:600;
+}
+
+.lego_grid{
+ display:grid;
+ grid-template-columns:repeat(12,1fr);
+ gap:18px;
+ margin-top:18px;
+}
+
+.lego{
+ border-radius:18px;
+ border:1px solid var(--border);
+ padding:22px;
+ min-height:140px;
+ overflow:hidden;
+}
+
+.lego h2, .lego h3{
+ margin:0 0 10px;
+}
+
+.lego p{
+ margin:0;
+ color:var(--text);
+ opacity:0.92;
+}
+
+.lego_small p{font-size:1.02rem}
+.lego_big h2{font-size:2rem}
+
+.lego_1{background:#122033;}
+.lego_2{background:#241a2f;}
+.lego_3{background:#1f2a1c;}
+.lego_4{background:#2b1c14;}
+.lego_5{background:#14302d;}
+.lego_6{background:#2b2b16;}
+.lego_7{background:#1a1a1a;}
+.lego_8{background:#2a1623;}
+
+.lego_empty{
+ background:transparent;
+ border:1px dashed var(--border);
+ min-height:140px;
+}
+
+.lego_media{
+ padding:0;
+}
+
+.lego_media img{
+ width:100%;
+ height:100%;
+ object-fit:cover;
+ display:block;
+}
+
+@media(max-width:900px){
+ .lego_grid{grid-template-columns:repeat(6,1fr)}
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="wrap nav">
+<a class="brand" href="#">
+<img src="img_logo.png" alt="Giulia Trust">
+<strong>Giulia Trust</strong>
+</a>
+
+<nav>
+<a href="#purpose">Purpose</a>
+<a href="#visuals">Vision</a>
+<a href="#contact">Contact</a>
+</nav>
+</div>
+</header>
+
+<section class="hero">
+<div class="wrap hero_grid">
+
+<div class="card hero_content">
+
+<img class="hero_logo" src="img_logo.png" alt="Giulia Trust logo">
+
+<h1>Giulia Trust</h1>
+
+<p class="hero_manifesto">
+Born from care, created by neurodivergence, for minds navigating a world not designed for them.
+</p>
+
+<p class="hero_text">
+Giulia Trust was created after Giulia, as dementia reshaped daily life and revealed how fragile dignity becomes inside complex systems.
+Founded by someone who lives neurodivergence, the Trust exists to support people who struggle not because they lack ability, but because the world around them was never designed with cognitive difference in mind.
+</p>
+
+<p class="contact_line">
+Contact:
+<a href="mailto:info@giuliatrust.org">info@giuliatrust.org</a>
+</p>
+
+</div>
+
+<div class="card">
+<div class="frame">
+<img src="img1.png">
+</div>
+</div>
+
+</div>
+</section>
+
+<main class="wrap">
+
+<section id="purpose" class="card section">
+<h2>Why Giulia Trust exists</h2>
+
+<div class="lego_grid">
+
+<div class="lego lego_1 lego_big" style="grid-column:span 7;">
+<h2>Born from care</h2>
+<p>
+Giulia Trust was created after Giulia. Dementia care made one truth impossible to ignore, dignity collapses quickly inside complex systems.
+</p>
+</div>
+
+<div class="lego lego_empty" style="grid-column:span 5;"></div>
+
+<div class="lego lego_2" style="grid-column:span 5;">
+<h3>Created by neurodivergence</h3>
+<p>
+This Trust was created by a neurodivergent founder, for neurodivergent people.
+</p>
+</div>
+
+<div class="lego lego_3" style="grid-column:span 7;">
+<h3>For minds navigating a world not designed for them</h3>
+<p>
+It exists to support people who struggle not because they lack ability, but because institutions are rarely built with cognitive difference in mind.
+</p>
+</div>
+
+<div class="lego lego_4" style="grid-column:span 4;">
+<h3>Accessibility</h3>
+<p>
+Clear routes through forms, processes, and gatekeeping language.
+</p>
+</div>
+
+<div class="lego lego_5" style="grid-column:span 4;">
+<h3>Advocacy</h3>
+<p>
+Standing beside people when the system becomes a wall.
+</p>
+</div>
+
+<div class="lego lego_6" style="grid-column:span 4;">
+<h3>Dignity</h3>
+<p>
+Less friction, more humanity, practical support that respects the person.
+</p>
+</div>
+
+</div>
+</section>
+
+<section id="visuals" class="card section">
+<h2>Visual direction</h2>
+
+<div class="lego_grid">
+
+<div class="lego lego_media" style="grid-column:span 7; min-height:260px;">
+<img src="img1.png" alt="Giulia Trust visual 1">
+</div>
+
+<div class="lego lego_7" style="grid-column:span 5; min-height:260px; display:flex; flex-direction:column; justify-content:center;">
+<h3>Modular by design</h3>
+<p>
+A site built like a stack of pieces, flexible, composable, and intentionally spacious.
+</p>
+</div>
+
+<div class="lego lego_empty" style="grid-column:span 3; min-height:180px;"></div>
+
+<div class="lego lego_media" style="grid-column:span 5; min-height:180px;">
+<img src="img2.png" alt="Giulia Trust visual 2">
+</div>
+
+<div class="lego lego_8" style="grid-column:span 4; min-height:180px; display:flex; flex-direction:column; justify-content:center;">
+<h3>Inclusion</h3>
+<p>
+Not a slogan, a structure.
+</p>
+</div>
+
+<div class="lego lego_media" style="grid-column:span 4; min-height:200px;">
+<img src="img3.png" alt="Giulia Trust visual 3">
+</div>
+
+<div class="lego lego_2" style="grid-column:span 4; min-height:200px; display:flex; flex-direction:column; justify-content:center;">
+<h3>Care</h3>
+<p>
+Support that feels human, not procedural.
+</p>
+</div>
+
+<div class="lego lego_media" style="grid-column:span 4; min-height:200px;">
+<img src="img4.png" alt="Giulia Trust visual 4">
+</div>
+
+</div>
+</section>
+
+<section id="contact" class="card section">
+<h2>Contact</h2>
+
+<p>
+For collaborations, partnerships, research enquiries or support requests:
+</p>
+
+<p>
+<a href="mailto:info@giuliatrust.org">info@giuliatrust.org</a>
+</p>
+</section>
+
+</main>
+
+<footer>
+<div class="wrap">
+© Giulia Trust · giuliatrust.org ·
+<a href="mailto:info@giuliatrust.org">info@giuliatrust.org</a>
+</div>
+</footer>
+
+</body>
+</html>
