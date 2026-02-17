@@ -8,221 +8,189 @@
 :root{
   --bg:#07080A;
   --text:#F2F4F6;
-  --muted:#A7ADB4;
-  --glass: rgba(18,18,20,0.65);
-  --glass2: rgba(18,18,20,0.45);
-  --stroke: rgba(255,255,255,0.16);
-  --stroke2: rgba(255,255,255,0.10);
-  --shadow: 0 24px 70px rgba(0,0,0,0.55);
+  --glass: rgba(18,18,20,0.2); /* Much clearer glass */
   --radius: 26px;
 }
 
 *{box-sizing:border-box}
-html,body{height:100%}
 body{
   margin:0;
-  background:var(--bg);
+  background-color:var(--bg);
   color:var(--text);
-  font-family: system-ui, Segoe UI, Roboto, Arial, sans-serif;
-  line-height:1.45;
-}
-
-/* Fixed Background Set to png */
-.site{
-  position:relative;
-  min-height:100vh;
+  font-family: system-ui, -apple-system, sans-serif;
+  /* Fixes the background zoom issue */
   background-image: url("./giulia_fullpage.png");
-  background-size: cover;
-  background-position: center;
+  background-size: 100% auto; 
   background-attachment: fixed;
-  background-repeat: no-repeat;
+  background-repeat: repeat-y;
 }
 
 .container{
-  width: calc(100% - 60px);
-  max-width: 1400px;
+  width: 90%;
+  max-width: 1200px;
   margin: 0 auto;
-  position: relative;
-  z-index: 2;
 }
 
+/* Hero: Clear glass and larger logo */
 .hero{
-  padding:42px 0 34px;
+  padding: 60px 0;
 }
-
 .heroCard{
-  display:grid;
-  grid-template-columns: 120px 1fr;
-  gap:22px;
-  padding:28px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 50px;
   border-radius: var(--radius);
   background: var(--glass);
-  backdrop-filter: blur(16px);
-  border: 1px solid var(--stroke);
-  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px); /* Clearer view of the background */
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
 .logoSlot{
-  width:120px;
-  height:120px;
-  border-radius: 22px;
-  border: 1px solid var(--stroke);
-  background: rgba(255,255,255,0.05);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
+  width: 220px; /* Bigger logo */
+  height: 220px;
+  flex-shrink: 0;
+}
+.logoSlot img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
-.logo{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-}
+h1{ font-size: 3rem; line-height: 1.1; margin: 0 0 20px; }
 
-h1{
-  margin:0 0 12px;
-  font-size: clamp(26px, 3.6vw, 46px);
-  line-height:1.08;
-}
-
-.lead{
-  margin:0 0 18px;
-  color:rgba(255,255,255,0.84);
-  max-width: 72ch;
-}
-
-.pills{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin: 0 0 18px;
-}
-
-.pill{
-  padding:8px 12px;
-  border-radius:999px;
-  border:1px solid var(--stroke2);
-  background: rgba(12,12,14,0.22);
-  font-size:13px;
-}
-
-.grid3{
-  display:grid;
+/* Floating Blocks: Text ON TOP of the blocks */
+.block-grid {
+  display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-top: 20px;
+  gap: 30px;
+  padding: 100px 0;
 }
 
-.card{
-  border-radius: 20px;
-  border: 1px solid var(--stroke2);
-  background: var(--glass2);
-  backdrop-filter: blur(10px);
-  overflow:hidden;
-  display:flex;
-  flex-direction:column;
-  min-height: 260px;
+.floating-block {
+  position: relative;
+  text-align: center;
+  transition: transform 0.3s ease;
 }
+.floating-block:hover { transform: translateY(-15px); }
 
-.cardImg{
-  height: 180px;
-  background-size: cover;
-  background-position: center;
-  border-bottom: 1px solid var(--stroke2);
-}
-
-.cardTop{
-  padding: 14px 16px 5px;
-  font-weight:800;
-  font-size:18px;
-}
-
-.cardBody{
-  padding: 5px 16px 20px;
-  color: rgba(255,255,255,0.80);
-  font-size:14px;
-}
-
-.divider img{
-  width:100%;
-  border-radius: 26px;
-  margin: 20px 0;
+.floating-block img {
+  width: 100%;
+  height: auto;
   display: block;
 }
 
-@media (max-width: 980px){
-  .heroCard{grid-template-columns: 1fr; }
-  .grid3{grid-template-columns: 1fr;}
+.block-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  font-weight: 800;
+  font-size: 1.2rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+  pointer-events: none;
+}
+
+/* Symmetric Image Section (img1 - img4) */
+.story-row {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  margin-bottom: 80px;
+}
+.story-row.reverse { flex-direction: row-reverse; }
+
+.story-img {
+  width: 50%;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+.story-img img { width: 100%; display: block; }
+
+.story-content { width: 50%; }
+
+@media (max-width: 900px) {
+  .heroCard, .story-row, .story-row.reverse { flex-direction: column; text-align: center; }
+  .block-grid { grid-template-columns: 1fr; }
+  .story-img, .story-content { width: 100%; }
 }
 </style>
 </head>
 
 <body>
-<div class="site">
 
   <header class="hero">
     <div class="container">
       <div class="heroCard">
         <div class="logoSlot">
-          <img class="logo" src="./giulia_lego_logo.png" alt="Giulia Trust logo">
+          <img src="./giulia_lego_logo.png" alt="Logo">
         </div>
-
-        <div>
-          <p style="font-size:12px; letter-spacing:0.14em; text-transform:uppercase; margin:0 0 8px;">Giulia Trust</p>
-          <h1>Born from care, created by neurodivergence, for minds navigating a world not designed for them.</h1>
-          <p class="lead">
-            Giulia Trust was created by a neurodivergent mind for neurodivergent minds, to help people who struggle in systems built for neurotypical patterns, and to cut through bureaucratic hurdles with clarity, dignity, and practical support.
-          </p>
-          <div class="pills">
-            <span class="pill">Accessibility first</span>
-            <span class="pill">Clear pathways</span>
-            <span class="pill">Human dignity</span>
-            <span class="pill">Advocacy that stays with you</span>
-          </div>
+        <div class="hero-text">
+          <h1>Born from care, created by neurodivergence.</h1>
+          <p>For minds navigating a world not designed for them.</p>
         </div>
       </div>
     </div>
   </header>
 
-  <section class="container">
-    <div class="divider">
-      <img src="./Lego_rainbow.png" alt="Lego Rainbow Divider">
-    </div>
+  <main class="container">
+    
+    <section class="block-grid">
+      <div class="floating-block">
+        <img src="./Lego_blue.png" alt="Blue Block">
+        <div class="block-text">ACCESSIBILITY</div>
+      </div>
+      <div class="floating-block">
+        <img src="./Lego_red.png" alt="Red Block">
+        <div class="block-text">ADVOCACY</div>
+      </div>
+      <div class="floating-block">
+        <img src="./Lego_yellow.png" alt="Yellow Block">
+        <div class="block-text">DIGNITY</div>
+      </div>
+    </section>
 
-    <div class="grid3">
-      <article class="card">
-        <div class="cardTop">Accessibility</div>
-        <div class="cardImg" style="background-image:url('./Lego_blue.png')"></div>
-        <div class="cardBody">
-          Clear routes through forms, processes, and language, so the path is visible, not a guessing game.
+    <section class="alternating-history">
+      <div class="story-row">
+        <div class="story-img"><img src="./img1.png" alt="Story 1"></div>
+        <div class="story-content">
+          <h3>The Vision</h3>
+          <p>Cutting through bureaucratic hurdles with clarity and practical support.</p>
         </div>
-      </article>
+      </div>
 
-      <article class="card">
-        <div class="cardTop">Advocacy</div>
-        <div class="cardImg" style="background-image:url('./Lego_red.png')"></div>
-        <div class="cardBody">
-          Standing beside people when the system becomes a wall, and pushing until it opens.
+      <div class="story-row reverse">
+        <div class="story-img"><img src="./img2.png" alt="Story 2"></div>
+        <div class="story-content">
+          <h3>Our Impact</h3>
+          <p>Standing beside people when the system becomes a wall.</p>
         </div>
-      </article>
+      </div>
 
-      <article class="card">
-        <div class="cardTop">Dignity</div>
-        <div class="cardImg" style="background-image:url('./Lego_yellow.png')"></div>
-        <div class="cardBody">
-          Practical support that respects pace, sensory load, and the reality of living inside constant demands.
+      <div class="story-row">
+        <div class="story-img"><img src="./img3.png" alt="Story 3"></div>
+        <div class="story-content">
+          <h3>Community</h3>
+          <p>Built by a neurodivergent mind for neurodivergent minds.</p>
         </div>
-      </article>
-    </div>
-  </section>
+      </div>
 
-  <footer style="padding: 40px 0; text-align: center; font-size: 13px; color: rgba(255,255,255,0.6);">
-    <div class="container">
-      Giulia Trust. Email only: <a href="mailto:info@giuliatrust.org" style="color:#fff">info@giuliatrust.org</a>
-    </div>
+      <div class="story-row reverse">
+        <div class="story-img"><img src="./img4.png" alt="Story 4"></div>
+        <div class="story-content">
+          <h3>The Path Forward</h3>
+          <p>Less friction, more dignity, practical support that respects pace.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer style="text-align: center; padding: 50px; background: rgba(0,0,0,0.5);">
+    <p>Giulia Trust. Email only: info@giuliatrust.org</p>
   </footer>
 
-</div>
 </body>
 </html>
