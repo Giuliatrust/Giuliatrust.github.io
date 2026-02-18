@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Giulia Trust</title>
-<link href="https://fonts.googleapis.com/css2?family=Titan+One&family=Open+Sans:wght@800&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Titan+One&display=swap" rel="stylesheet">
 
 <style>
 :root {
@@ -18,11 +19,22 @@ body {
   margin:0;
   background-color:var(--bg);
   color:#fff;
-  font-family: 'Open Sans', sans-serif;
   background-image: url("./giulia_fullpage.png");
   background-size: 100% auto;
   background-attachment: fixed;
   background-repeat: no-repeat;
+
+  /* Make LEGO style the default across the whole website */
+  font-family: 'Titan One', cursive;
+  letter-spacing: 0.5px;
+}
+
+/* Optional. Use this class if you ever need normal readable body text */
+.normal-text {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  letter-spacing: 0;
+  text-transform: none;
+  text-shadow: none;
 }
 
 .container {
@@ -31,16 +43,14 @@ body {
   margin: 0 auto;
 }
 
-/* --- THE AUTHENTIC LEGO FONT STYLE --- */
-/* Heavily weighted black border with a thick yellow outer glow to match the reference */
+/* LEGO sign effect. Apply this to any element that must look exactly like the logo text */
 .lego-style {
   font-family: 'Titan One', cursive;
   color: #fff;
   text-transform: uppercase;
   line-height: 1.1;
-  text-shadow: 
-    /* Thick Black Border */
-    -2px -2px 0 #000,  
+  text-shadow:
+    -2px -2px 0 #000,
      2px -2px 0 #000,
     -2px  2px 0 #000,
      2px  2px 0 #000,
@@ -48,10 +58,14 @@ body {
      3px  0px 0 #000,
      0px -3px 0 #000,
      0px  3px 0 #000,
-    /* Thick Yellow Outer Shadow */
      5px  5px 0px var(--lego-yellow),
      6px  6px 0px var(--lego-yellow),
      7px  7px 10px rgba(0,0,0,0.8);
+}
+
+/* Make headings and small text still look LEGO but not giant */
+h1,h2,h3,h4,h5,h6,div,span,p,li,a {
+  text-transform: uppercase;
 }
 
 /* --- REFINED HEADER --- */
@@ -64,7 +78,7 @@ body {
 }
 
 .logo-small {
-  width: 180px; /* Scaled down logo */
+  width: 180px;
   border: 4px solid #000;
   margin-bottom: 30px;
 }
@@ -137,6 +151,7 @@ body {
 @media (max-width: 900px) {
   .title-line { font-size: 3.5rem; }
   .subtitle-middle { font-size: 1.8rem; }
+  .long-tagline { font-size: 1.2rem; }
   .story-row { flex-direction: column; text-align: center; }
   .tile { width: 50%; }
 }
@@ -148,11 +163,11 @@ body {
   <header class="container">
     <div class="header-area">
       <img src="./giulia_lego_logo.jpg" class="logo-small" alt="Giulia Trust Logo">
-      
+
       <h1 class="lego-style title-line">Giulia Trust</h1>
-      
+
       <div class="lego-style subtitle-middle">Born from care</div>
-      
+
       <div class="lego-style long-tagline">
         Created by a neurodivergent mind for neurodivergent minds navigating a world not designed for them.
       </div>
@@ -160,7 +175,7 @@ body {
   </header>
 
   <main class="container">
-    
+
     <div class="story-row">
       <div class="story-img"><img src="./img1.png" alt="img1"></div>
       <div class="story-content">
@@ -169,7 +184,7 @@ body {
     </div>
 
     <div class="block-wrap">
-       <img src="./Lego_rainbow.png" alt="Rainbow">
+      <img src="./Lego_rainbow.png" alt="Rainbow">
     </div>
 
     <div class="story-row reverse">
