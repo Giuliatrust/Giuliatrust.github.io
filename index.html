@@ -1,17 +1,18 @@
-
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Giulia Trust</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Bebas+Neue&family=Open+Sans:wght@700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Titan+One&family=Bangers&family=Open+Sans:wght@800&display=swap" rel="stylesheet">
 
 <style>
 :root {
+  --lego-red: #E3000B;
+  --lego-yellow: #FFCF00;
+  --lego-blue: #0055BF;
   --bg: #07080A;
   --text: #FFFFFF;
-  --radius: 30px;
 }
 
 * { box-sizing: border-box; }
@@ -29,59 +30,87 @@ body {
 
 .container {
   width: 90%;
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-/* --- THE DYNAMIC HERO AREA --- */
-.hero {
-  padding: 140px 0 100px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* --- THE 3D LOGO --- */
+.logo-top-right {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  width: 120px;
+  z-index: 100;
+  padding: 10px;
+  background: var(--lego-red);
+  /* Black 3D Frame */
+  border: 4px solid #000;
+  box-shadow: 6px 6px 0px #000, 0 10px 20px rgba(0,0,0,0.5);
+  border-radius: 8px;
 }
 
-.hero-logo {
-  width: 550px; /* Large centerpiece logo */
-  height: auto;
-  margin-bottom: 50px;
-  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.7));
+/* --- HERO AREA (Floating Text, No BG) --- */
+.hero {
+  padding: 120px 0 60px;
+}
+
+.hero-logo-top-left {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  width: 140px;
 }
 
 .hero h1 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 6rem;
-  letter-spacing: 6px;
-  line-height: 0.9;
-  margin: 0;
+  font-family: 'Titan One', cursive;
+  font-size: 5rem;
+  line-height: 1.1;
   color: #fff;
-  text-shadow: 0 10px 30px rgba(0,0,0,0.9);
+  /* Lego 3D Text Style */
+  text-shadow: 
+    3px 3px 0px #000, 
+    -1px -1px 0px #000,  
+    1px -1px 0px #000, 
+    -1px 1px 0px #000, 
+    1px 1px 0px #000,
+    6px 6px 0px var(--lego-red);
 }
 
-/* --- VERTICAL SEQUENCE --- */
-.vertical-sequence {
-  display: flex;
-  flex-direction: column;
-  gap: 120px;
-  padding-bottom: 120px;
+.hero p {
+  font-family: 'Bangers', cursive;
+  font-size: 2.2rem;
+  letter-spacing: 2px;
+  color: var(--lego-yellow);
+  text-shadow: 3px 3px 0px #000;
 }
 
-.section-img {
+/* --- 3D BACKLIT IMAGES --- */
+.section-img-wrap {
+  position: relative;
+  margin: 80px 0;
+  /* 3D Black Frame */
+  border: 8px solid #000;
+  box-shadow: 10px 10px 0px #000;
+  border-radius: 12px;
+  overflow: hidden;
+  /* Neon Backlight Glow */
+  filter: drop-shadow(0 0 15px rgba(255, 207, 0, 0.4));
+}
+
+.section-img-wrap img {
   width: 100%;
-  border-radius: var(--radius);
-  box-shadow: 0 30px 60px rgba(0,0,0,0.8);
-  border: 1px solid rgba(255,255,255,0.1);
   display: block;
+  transform: scale(1.01);
 }
 
-/* --- LEGO BLOCKS (Matching Sizes) --- */
+/* --- LEGO WORDING BLOCKS --- */
 .lego-block-wrap {
   position: relative;
   width: 100%;
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: 0 40px 80px rgba(0,0,0,0.9);
+  margin: 80px 0;
+  border: 6px solid #000;
+  box-shadow: 12px 12px 0px #000;
+  border-radius: 15px;
 }
 
 .lego-block-wrap img {
@@ -89,136 +118,130 @@ body {
   display: block;
 }
 
-/* --- LEGO 3D TYPOGRAPHY OVERLAY --- */
-.overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: rgba(0,0,0,0.15);
-}
-
 .overlay h2 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 5.5rem;
+  font-family: 'Titan One', cursive;
+  font-size: 6rem;
   text-transform: uppercase;
-  margin: 0;
   color: #fff;
-  /* High-visibility Lego mold effect */
-  -webkit-text-stroke: 2px black;
+  /* Triple layered text shadow for 3D depth */
   text-shadow: 
-    1px 1px 0px #eee, 
-    2px 2px 0px #ddd, 
-    8px 8px 15px rgba(0,0,0,1);
+    2px 2px 0px #000, 
+    4px 4px 0px #000, 
+    8px 8px 0px rgba(0,0,0,0.5);
 }
 
 .overlay p {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 800;
-  font-size: 1.8rem;
-  margin-top: 15px;
-  color: #fff;
-  background: rgba(0,0,0,0.75); /* High contrast "Sentence Pill" */
-  padding: 12px 40px;
-  border-radius: 60px;
-  text-align: center;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+  font-family: 'Bangers', cursive;
+  font-size: 2rem;
+  color: #000; /* Lego manual style black text on yellow/bright bg */
+  background: var(--lego-yellow);
+  padding: 10px 40px;
+  border: 4px solid #000;
+  box-shadow: 4px 4px 0px #000;
 }
 
-/* --- FINAL ZIGZAG TILE FOOTER --- */
+/* --- ZIGZAG TILES --- */
 .zigzag-footer {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  padding: 60px 0 100px;
+  padding: 100px 0;
 }
 
 .tile {
   width: 100%;
-  border-radius: 15px;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-  transition: transform 0.3s ease;
+  border: 4px solid #000;
+  box-shadow: 6px 6px 0px #000;
+  transition: 0.3s;
 }
 
-.tile:nth-child(even) { transform: translateY(30px); }
-.tile:nth-child(odd) { transform: translateY(-30px); }
-
-.tile:hover { transform: scale(1.1) rotate(2deg); z-index: 10; }
+.tile:nth-child(even) { transform: translateY(40px); }
+.tile:nth-child(odd) { transform: translateY(-40px); }
 
 @media (max-width: 768px) {
-  .hero-logo { width: 90%; }
-  .hero h1 { font-size: 3.5rem; }
-  .overlay h2 { font-size: 2.5rem; }
-  .overlay p { font-size: 1.1rem; width: 85%; }
-  .zigzag-footer { grid-template-columns: repeat(2, 1fr); gap: 40px; }
-  .tile:nth-child(n) { transform: none; }
+  .hero h1 { font-size: 2.5rem; }
+  .logo-top-right { width: 80px; top: 10px; right: 10px; }
+  .zigzag-footer { grid-template-columns: repeat(2, 1fr); }
 }
 </style>
 </head>
 
 <body>
 
+  <div class="logo-top-right">
+    <img src="./giulia_lego_logo.jpg" style="width:100%;" alt="Logo">
+  </div>
+
   <header class="hero">
+    <img src="./giulia_lego_logo.jpg" class="hero-logo-top-left" alt="Giulia Logo">
+    
     <div class="container">
-      <img src="./giulia_lego_logo.jpg" alt="Giulia Trust Logo" class="hero-logo">
-      <h1>The Giulia Trust</h1>
+      <h1>Born from care.</h1>
+      <p>Created by neurodivergence, for minds navigating a world not designed for them.</p>
     </div>
   </header>
 
-  <main class="container vertical-stack">
+  <main class="container">
     
-    <img src="./img1.png" alt="Building bridges" class="section-img">
-
-    <div class="lego-block-wrap">
-       <img src="./Lego_rainbow.png" alt="Rainbow Foundation">
+    <div class="section-img-wrap" style="filter: drop-shadow(0 0 20px var(--lego-blue));">
+      <img src="./img1.png" alt="Bridge">
     </div>
 
-    <img src="./img2.png" alt="Connecting dots" class="section-img">
+    <div class="lego-block-wrap">
+       <img src="./Lego_rainbow.png" alt="Rainbow">
+    </div>
+
+    <div class="section-img-wrap" style="filter: drop-shadow(0 0 20px var(--lego-red));">
+      <img src="./img2.png" alt="Path">
+    </div>
 
     <div class="lego-block-wrap">
-      <img src="./Lego_blue.png" alt="Blue Block">
-      <div class="overlay">
-        <h2>Accessibility</h2>
-        <p>Building clear pathways through a world that wasn't designed for us.</p>
+      <img src="./Lego_blue.png" alt="Blue">
+      <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+        <h2 style="font-family:'Titan One'; font-size:5rem; text-shadow: 5px 5px 0 #000;">Accessibility</h2>
+        <p style="font-family:'Bangers'; font-size:2rem; background:var(--lego-yellow); color:#000; padding:10px 20px; border:4px solid #000;">Clear routes, visible paths.</p>
       </div>
     </div>
 
-    <img src="./img3.png" alt="Community" class="section-img">
+    <div class="section-img-wrap" style="filter: drop-shadow(0 0 20px var(--lego-yellow));">
+      <img src="./img3.png" alt="Community">
+    </div>
 
     <div class="lego-block-wrap">
-      <img src="./Lego_red.png" alt="Red Block">
-      <div class="overlay">
-        <h2>Advocacy</h2>
-        <p>Standing tall as the shield when the system becomes a wall.</p>
+      <img src="./Lego_red.png" alt="Red">
+      <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+        <h2 style="font-family:'Titan One'; font-size:5rem; text-shadow: 5px 5px 0 #000;">Advocacy</h2>
+        <p style="font-family:'Bangers'; font-size:2rem; background:#fff; color:#000; padding:10px 20px; border:4px solid #000;">Standing beside you when systems fail.</p>
       </div>
     </div>
 
-    <img src="./img4.png" alt="The Motto" class="section-img">
+    <div class="section-img-wrap" style="filter: drop-shadow(0 0 20px #fff);">
+      <img src="./img4.png" alt="Motto">
+    </div>
 
     <div class="lego-block-wrap">
-      <img src="./Lego_yellow.png" alt="Yellow Block">
-      <div class="overlay">
-        <h2>Dignity</h2>
-        <p>Support that honors your history, your scars, and your pace.</p>
+      <img src="./Lego_yellow.png" alt="Yellow">
+      <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+        <h2 style="font-family:'Titan One'; font-size:5rem; text-shadow: 5px 5px 0 #000; color:#000;">Dignity</h2>
+        <p style="font-family:'Bangers'; font-size:2rem; background:var(--lego-blue); color:#fff; padding:10px 20px; border:4px solid #000;">Support that respects your pace.</p>
       </div>
     </div>
 
-    <img src="./img5.png" alt="The Journey Ahead" class="section-img">
+    <div class="section-img-wrap">
+      <img src="./img5.png" alt="Journey">
+    </div>
 
     <div class="zigzag-footer">
-      <img src="./LRW.png" alt="Zigzag 1" class="tile">
-      <img src="./LR.png" alt="Zigzag 2" class="tile">
-      <img src="./LG.png" alt="Zigzag 3" class="tile">
-      <img src="./LB.png" alt="Zigzag 4" class="tile">
+      <img src="./LRW.png" class="tile" alt="Tile 1">
+      <img src="./LR.png" class="tile" alt="Tile 2">
+      <img src="./LG.png" class="tile" alt="Tile 3">
+      <img src="./LB.png" class="tile" alt="Tile 4">
     </div>
 
   </main>
 
-  <footer style="text-align: center; padding: 100px 0; font-family: 'Bebas Neue'; font-size: 2.5rem; letter-spacing: 4px;">
-    <p>Humour Kills the Tumour</p>
-    <a href="mailto:info@giuliatrust.org" style="color:#ffcc00; text-decoration:none;">info@giuliatrust.org</a>
+  <footer style="text-align: center; padding: 100px 0; font-family: 'Titan One'; font-size: 3rem; color: var(--lego-yellow); text-shadow: 4px 4px 0 #000;">
+    HUMOUR KILLS THE TUMOUR
   </footer>
 
 </body>
