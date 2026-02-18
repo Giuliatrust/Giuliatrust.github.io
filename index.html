@@ -8,21 +8,27 @@
 :root{
   --bg:#07080A;
   --text:#F2F4F6;
-  --glass: rgba(18,18,20,0.2); /* Much clearer glass */
+  --glass: rgba(255, 255, 255, 0.08); 
   --radius: 26px;
 }
 
 *{box-sizing:border-box}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
 body{
-  margin:0;
   background-color:var(--bg);
   color:var(--text);
-  font-family: system-ui, -apple-system, sans-serif;
-  /* Fixes the background zoom issue */
+  font-family: "Arial Black", "Gadget", sans-serif; /* Thick font for LEGO feel */
+  /* Fixes background zoom - scaled to fit width without distortion */
   background-image: url("./giulia_fullpage.png");
-  background-size: 100% auto; 
+  background-size: 100% auto;
   background-attachment: fixed;
-  background-repeat: repeat-y;
+  background-repeat: no-repeat;
+  line-height: 1.6;
 }
 
 .container{
@@ -31,10 +37,11 @@ body{
   margin: 0 auto;
 }
 
-/* Hero: Clear glass and larger logo */
+/* Hero Section: Clear glass and larger logo */
 .hero{
-  padding: 60px 0;
+  padding: 80px 0 40px;
 }
+
 .heroCard{
   display: flex;
   align-items: center;
@@ -42,79 +49,125 @@ body{
   padding: 50px;
   border-radius: var(--radius);
   background: var(--glass);
-  backdrop-filter: blur(8px); /* Clearer view of the background */
-  border: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
 }
 
 .logoSlot{
-  width: 220px; /* Bigger logo */
-  height: 220px;
+  width: 250px; 
+  height: 250px;
   flex-shrink: 0;
 }
+
 .logoSlot img{
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 
-h1{ font-size: 3rem; line-height: 1.1; margin: 0 0 20px; }
+.hero-text h1{
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.1;
+  margin: 0 0 15px;
+}
 
-/* Floating Blocks: Text ON TOP of the blocks */
-.block-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  padding: 100px 0;
+/* Long Rectangular Floating Blocks */
+.block-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+  padding: 60px 0;
 }
 
 .floating-block {
   position: relative;
-  text-align: center;
-  transition: transform 0.3s ease;
+  width: 100%;
+  max-width: 1000px; 
+  margin: 0 auto;
+  transition: transform 0.4s ease;
 }
-.floating-block:hover { transform: translateY(-15px); }
+
+.floating-block:hover { transform: scale(1.03); }
 
 .floating-block img {
   width: 100%;
-  height: auto;
+  height: 160px; /* Long rectangular ratio */
+  object-fit: cover; 
+  border-radius: 12px;
   display: block;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5);
 }
 
+/* LEGO Embossed Lettering Effect */
 .block-text {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80%;
-  font-weight: 800;
-  font-size: 1.2rem;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+  width: 95%;
+  text-align: center;
+  font-weight: 900;
+  font-size: 3.5rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  /* Multi-layered shadow to create the molded plastic look */
+  text-shadow: 
+    1px 1px 0px #eee, 
+    2px 2px 0px #ddd, 
+    3px 3px 0px #ccc, 
+    4px 4px 0px #bbb, 
+    0px 10px 15px rgba(0,0,0,0.8);
   pointer-events: none;
 }
 
-/* Symmetric Image Section (img1 - img4) */
+/* Divider Section */
+.rainbow-section {
+  padding: 40px 0;
+  text-align: center;
+}
+
+.rainbow-img {
+  width: 100%;
+  border-radius: var(--radius);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+
+/* Symmetric alternating blocks (img1 - img4) */
 .story-row {
   display: flex;
   align-items: center;
-  gap: 50px;
-  margin-bottom: 80px;
+  gap: 60px;
+  margin-bottom: 100px;
 }
+
 .story-row.reverse { flex-direction: row-reverse; }
 
 .story-img {
   width: 50%;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
 }
+
 .story-img img { width: 100%; display: block; }
 
-.story-content { width: 50%; }
+.story-content { 
+  width: 50%; 
+  font-family: system-ui, -apple-system, sans-serif; /* Cleaner font for reading body text */
+}
 
+.story-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+/* Responsive adjustments */
 @media (max-width: 900px) {
   .heroCard, .story-row, .story-row.reverse { flex-direction: column; text-align: center; }
-  .block-grid { grid-template-columns: 1fr; }
   .story-img, .story-content { width: 100%; }
+  .logoSlot { width: 180px; height: 180px; }
+  .block-text { font-size: 2rem; letter-spacing: 2px; }
+  .floating-block img { height: 110px; }
 }
 </style>
 </head>
@@ -125,11 +178,11 @@ h1{ font-size: 3rem; line-height: 1.1; margin: 0 0 20px; }
     <div class="container">
       <div class="heroCard">
         <div class="logoSlot">
-          <img src="./giulia_lego_logo.png" alt="Logo">
+          <img src="./giulia_lego_logo.jpg" alt="Giulia Trust Logo">
         </div>
         <div class="hero-text">
           <h1>Born from care, created by neurodivergence.</h1>
-          <p>For minds navigating a world not designed for them.</p>
+          <p style="font-family: system-ui; font-size: 1.3rem; opacity: 0.9;">For minds navigating a world not designed for them.</p>
         </div>
       </div>
     </div>
@@ -137,59 +190,67 @@ h1{ font-size: 3rem; line-height: 1.1; margin: 0 0 20px; }
 
   <main class="container">
     
-    <section class="block-grid">
+    <section class="rainbow-section">
+      <img src="./Lego_rainbow.png" alt="Our Foundation" class="rainbow-img">
+    </section>
+
+    <section class="block-stack">
       <div class="floating-block">
-        <img src="./Lego_blue.png" alt="Blue Block">
-        <div class="block-text">ACCESSIBILITY</div>
+        <img src="./Lego_blue.png" alt="Accessibility Brick">
+        <div class="block-text">Accessibility</div>
       </div>
       <div class="floating-block">
-        <img src="./Lego_red.png" alt="Red Block">
-        <div class="block-text">ADVOCACY</div>
+        <img src="./Lego_red.png" alt="Advocacy Brick">
+        <div class="block-text">Advocacy</div>
       </div>
       <div class="floating-block">
-        <img src="./Lego_yellow.png" alt="Yellow Block">
-        <div class="block-text">DIGNITY</div>
+        <img src="./Lego_yellow.png" alt="Dignity Brick">
+        <div class="block-text">Dignity</div>
       </div>
     </section>
 
-    <section class="alternating-history">
+    <section class="alternating-blocks">
+      
       <div class="story-row">
-        <div class="story-img"><img src="./img1.png" alt="Story 1"></div>
+        <div class="story-img"><img src="./img1.png" alt="Building bridges"></div>
         <div class="story-content">
-          <h3>The Vision</h3>
-          <p>Cutting through bureaucratic hurdles with clarity and practical support.</p>
+          <h2>Our Core</h2>
+          <p>Helping people who struggle in systems built for neurotypical patterns with clarity and dignity. We provide practical support that respects pace, sensory load, and the reality of living inside constant demands.</p>
         </div>
       </div>
 
       <div class="story-row reverse">
-        <div class="story-img"><img src="./img2.png" alt="Story 2"></div>
+        <div class="story-img"><img src="./img2.png" alt="Connecting dots"></div>
         <div class="story-content">
-          <h3>Our Impact</h3>
-          <p>Standing beside people when the system becomes a wall.</p>
+          <h2>Clear Pathways</h2>
+          <p>Cutting through bureaucratic hurdles with human-first logic. Clear routes through forms, processes, and language, so the path is visible rather than a guessing game.</p>
         </div>
       </div>
 
       <div class="story-row">
-        <div class="story-img"><img src="./img3.png" alt="Story 3"></div>
+        <div class="story-img"><img src="./img3.png" alt="Collective piece"></div>
         <div class="story-content">
-          <h3>Community</h3>
-          <p>Built by a neurodivergent mind for neurodivergent minds.</p>
+          <h2>Standing Together</h2>
+          <p>Advocacy that stays with you. We stand beside people when the system becomes a wall and push until it opens.</p>
         </div>
       </div>
 
       <div class="story-row reverse">
-        <div class="story-img"><img src="./img4.png" alt="Story 4"></div>
+        <div class="story-img"><img src="./img4.png" alt="The Motto"></div>
         <div class="story-content">
-          <h3>The Path Forward</h3>
-          <p>Less friction, more dignity, practical support that respects pace.</p>
+          <h2>Humour kills the tumour</h2>
+          <p>Umore uccide il tumore. We never take the system too seriously, and we find the strength to fight verbal battles for those who cannot fight them alone.</p>
         </div>
       </div>
+
     </section>
 
   </main>
 
-  <footer style="text-align: center; padding: 50px; background: rgba(0,0,0,0.5);">
-    <p>Giulia Trust. Email only: info@giuliatrust.org</p>
+  <footer style="text-align: center; padding: 80px 0; opacity: 0.8; font-family: system-ui;">
+    <div class="container">
+      <p>Giulia Trust. Email only: <a href="mailto:info@giuliatrust.org" style="color:#fff; font-weight: bold;">info@giuliatrust.org</a></p>
+    </div>
   </footer>
 
 </body>
