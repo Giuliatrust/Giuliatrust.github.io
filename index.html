@@ -8,232 +8,279 @@
 <link href="https://fonts.googleapis.com/css2?family=Titan+One&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --lego-yellow: #FFCF00;
-  --bg: #07080A;
+
+:root{
+  --lego-yellow:#FFCF00;
+  --bg:#07080A;
 }
 
 *{box-sizing:border-box}
 
-body {
+body{
   margin:0;
   background-color:var(--bg);
   color:#fff;
-  background-image: url("./giulia_fullpage.png");
-  background-size: 100% auto;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-
-  /* Make LEGO style the default across the whole website */
-  font-family: 'Titan One', cursive;
-  letter-spacing: 0.5px;
+  font-family:Arial, Helvetica, sans-serif;
+  background-image:url("./giulia_fullpage.png");
+  background-size:100% auto;
+  background-attachment:fixed;
+  background-repeat:no-repeat;
 }
 
-/* Optional. Use this class if you ever need normal readable body text */
-.normal-text {
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  letter-spacing: 0;
-  text-transform: none;
-  text-shadow: none;
+.container{
+  width:90%;
+  max-width:1200px;
+  margin:0 auto;
 }
 
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
+/* ================= LEGO TITLE STYLE (REALISTIC) ================= */
 
-/* LEGO sign effect. Apply this to any element that must look exactly like the logo text */
-.lego-style {
-  font-family: 'Titan One', cursive;
-  color: #fff;
-  text-transform: uppercase;
-  line-height: 1.1;
+.lego-style{
+  font-family:'Titan One', cursive;
+  text-transform:uppercase;
+  line-height:1.05;
+  letter-spacing:1px;
+
+  color:#E9DEC0;
+
+  position:relative;
+
   text-shadow:
+    0 2px 0 rgba(0,0,0,0.35),
+    0 -1px 0 rgba(255,255,255,0.15),
+
+    -1px -1px 0 #000,
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000,
+
     -2px -2px 0 #000,
      2px -2px 0 #000,
     -2px  2px 0 #000,
      2px  2px 0 #000,
-    -3px  0px 0 #000,
-     3px  0px 0 #000,
-     0px -3px 0 #000,
-     0px  3px 0 #000,
-     5px  5px 0px var(--lego-yellow),
-     6px  6px 0px var(--lego-yellow),
-     7px  7px 10px rgba(0,0,0,0.8);
+
+    -3px -3px 0 #000,
+     3px -3px 0 #000,
+    -3px  3px 0 #000,
+     3px  3px 0 #000,
+
+    -4px 0 0 #000,
+     4px 0 0 #000,
+     0 -4px 0 #000,
+     0  4px 0 #000,
+
+    -5px -5px 0 var(--lego-yellow),
+     5px -5px 0 var(--lego-yellow),
+    -5px  5px 0 var(--lego-yellow),
+     5px  5px 0 var(--lego-yellow);
 }
 
-/* Make headings and small text still look LEGO but not giant */
-h1,h2,h3,h4,h5,h6,div,span,p,li,a {
-  text-transform: uppercase;
+.lego-style::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.18) 0%,
+      rgba(255,255,255,0.08) 25%,
+      rgba(255,255,255,0) 55%
+    );
+
+  mix-blend-mode:soft-light;
 }
 
-/* --- REFINED HEADER --- */
-.header-area {
-  padding: 60px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+/* ================= HEADER ================= */
+
+.header-area{
+  padding:70px 0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:35px;
 }
 
-.logo-small {
-  width: 180px;
-  border: 4px solid #000;
-  margin-bottom: 30px;
+.logo-small{
+  width:180px;
+  border:4px solid #000;
 }
 
-.title-line {
-  font-size: 6rem;
-  margin: 0;
+.title-group{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 }
 
-.subtitle-middle {
-  font-size: 2.5rem;
-  margin: 15px 0;
+.title-line{
+  font-size:5.5rem;
+  margin:0;
 }
 
-.long-tagline {
-  font-size: 1.6rem;
-  width: 100%;
-  max-width: 1000px;
-  margin-top: 10px;
+.subtitle-middle{
+  font-size:2.1rem;
+  margin-top:10px;
 }
 
-/* --- VERTICAL STACK --- */
-.story-row {
-  display: flex;
-  align-items: center;
-  gap: 50px;
-  margin: 100px 0;
+/* ================= CONTENT ================= */
+
+.story-row{
+  display:flex;
+  align-items:center;
+  gap:50px;
+  margin:100px 0;
 }
 
-.story-row.reverse { flex-direction: row-reverse; }
-
-.story-img {
-  flex: 0 0 450px;
-  border: 2px solid #000;
+.story-row.reverse{
+  flex-direction:row-reverse;
 }
 
-.story-img img { width: 100%; display: block; }
-
-.story-content { flex: 1; }
-
-.block-wrap {
-  position: relative;
-  width: 100%;
-  margin: 40px 0;
+.story-img{
+  flex:0 0 450px;
+  border:2px solid #000;
 }
 
-.block-wrap img { width: 100%; display: block; }
-
-.block-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.story-img img{
+  width:100%;
+  display:block;
 }
 
-/* --- ZIGZAG TILES --- */
-.zigzag-footer {
-  display: flex;
-  width: 100%;
-  padding: 100px 0;
+.story-content{
+  flex:1;
 }
 
-.tile { width: 25%; }
-.tile img { width: 100%; display: block; }
-
-.tile:nth-child(odd) { transform: translateY(-30px); }
-.tile:nth-child(even) { transform: translateY(30px); }
-
-@media (max-width: 900px) {
-  .title-line { font-size: 3.5rem; }
-  .subtitle-middle { font-size: 1.8rem; }
-  .long-tagline { font-size: 1.2rem; }
-  .story-row { flex-direction: column; text-align: center; }
-  .tile { width: 50%; }
+.block-wrap{
+  position:relative;
+  width:100%;
+  margin:40px 0;
 }
+
+.block-wrap img{
+  width:100%;
+  display:block;
+}
+
+.block-overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* ================= ZIGZAG FOOTER ================= */
+
+.zigzag-footer{
+  display:flex;
+  width:100%;
+  padding:100px 0;
+}
+
+.tile{width:25%;}
+.tile img{width:100%;display:block;}
+
+.tile:nth-child(odd){transform:translateY(-30px);}
+.tile:nth-child(even){transform:translateY(30px);}
+
+/* ================= MOBILE ================= */
+
+@media (max-width:900px){
+
+  .header-area{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .title-line{font-size:3.5rem;}
+  .subtitle-middle{font-size:1.6rem;}
+
+  .story-row{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .tile{width:50%;}
+}
+
 </style>
 </head>
 
 <body>
 
-  <header class="container">
-    <div class="header-area">
-      <img src="./giulia_lego_logo.jpg" class="logo-small" alt="Giulia Trust Logo">
+<header class="container">
+  <div class="header-area">
 
+    <img src="./giulia_lego_logo.jpg" class="logo-small" alt="Giulia Trust Logo">
+
+    <div class="title-group">
       <h1 class="lego-style title-line">Giulia Trust</h1>
-
       <div class="lego-style subtitle-middle">Born from care</div>
-
-      <div class="lego-style long-tagline">
-        Created by a neurodivergent mind for neurodivergent minds navigating a world not designed for them.
-      </div>
-    </div>
-  </header>
-
-  <main class="container">
-
-    <div class="story-row">
-      <div class="story-img"><img src="./img1.png" alt="img1"></div>
-      <div class="story-content">
-        <h2 class="lego-style" style="font-size: 3rem;">Our Core</h2>
-      </div>
     </div>
 
-    <div class="block-wrap">
-      <img src="./Lego_rainbow.png" alt="Rainbow">
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="story-row">
+    <div class="story-img"><img src="./img1.png" alt="img1"></div>
+    <div class="story-content">
+      <h2 style="font-size:3rem;">Our Core</h2>
     </div>
+  </div>
 
-    <div class="story-row reverse">
-      <div class="story-img"><img src="./img2.png" alt="img2"></div>
-      <div class="story-content">
-        <h2 class="lego-style" style="font-size: 3rem;">Clear Pathways</h2>
-      </div>
+  <div class="block-wrap">
+    <img src="./Lego_rainbow.png" alt="Rainbow">
+  </div>
+
+  <div class="story-row reverse">
+    <div class="story-img"><img src="./img2.png" alt="img2"></div>
+    <div class="story-content">
+      <h2 style="font-size:3rem;">Clear Pathways</h2>
     </div>
+  </div>
 
-    <div class="block-wrap">
-      <img src="./Lego_blue.png" alt="Blue">
-      <div class="block-overlay">
-        <h2 class="lego-style" style="font-size: 5rem;">Accessibility</h2>
-      </div>
+  <div class="block-wrap">
+    <img src="./Lego_blue.png" alt="Blue">
+    <div class="block-overlay">
+      <h2 style="font-size:5rem;">Accessibility</h2>
     </div>
+  </div>
 
-    <div class="story-row">
-      <div class="story-img"><img src="./img3.png" alt="img3"></div>
-      <div class="story-content">
-        <h2 class="lego-style" style="font-size: 3rem;">Advocacy</h2>
-      </div>
+  <div class="story-row">
+    <div class="story-img"><img src="./img3.png" alt="img3"></div>
+    <div class="story-content">
+      <h2 style="font-size:3rem;">Advocacy</h2>
     </div>
+  </div>
 
-    <div class="block-wrap">
-      <img src="./Lego_red.png" alt="Red">
-      <div class="block-overlay">
-        <h2 class="lego-style" style="font-size: 5rem;">Advocacy</h2>
-      </div>
+  <div class="block-wrap">
+    <img src="./Lego_red.png" alt="Red">
+    <div class="block-overlay">
+      <h2 style="font-size:5rem;">Advocacy</h2>
     </div>
+  </div>
 
-    <div class="block-wrap">
-      <img src="./Lego_yellow.png" alt="Yellow">
-      <div class="block-overlay">
-        <h2 class="lego-style" style="font-size: 5rem;">Dignity</h2>
-      </div>
+  <div class="block-wrap">
+    <img src="./Lego_yellow.png" alt="Yellow">
+    <div class="block-overlay">
+      <h2 style="font-size:5rem;">Dignity</h2>
     </div>
+  </div>
 
-    <div class="zigzag-footer">
-      <div class="tile"><img src="./LRW.PNG" alt="LRW"></div>
-      <div class="tile"><img src="./LR.PNG" alt="LR"></div>
-      <div class="tile"><img src="./LG.PNG" alt="LG"></div>
-      <div class="tile"><img src="./LB.PNG" alt="LB"></div>
-    </div>
+  <div class="zigzag-footer">
+    <div class="tile"><img src="./LRW.PNG" alt="LRW"></div>
+    <div class="tile"><img src="./LR.PNG" alt="LR"></div>
+    <div class="tile"><img src="./LG.PNG" alt="LG"></div>
+    <div class="tile"><img src="./LB.PNG" alt="LB"></div>
+  </div>
 
-  </main>
+</main>
 
-  <footer style="text-align: center; padding: 100px 0;">
-    <h2 class="lego-style" style="font-size: 4rem;">Humour Kills The Tumour</h2>
-  </footer>
+<footer style="text-align:center;padding:100px 0;">
+  <h2 style="font-size:4rem;">Humour Kills The Tumour</h2>
+</footer>
 
 </body>
 </html>
