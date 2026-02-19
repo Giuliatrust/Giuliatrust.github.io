@@ -4,31 +4,46 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Giulia Trust</title>
-
 <style>
-
-/* ---------- BASE ---------- */
+:root{
+  --bg:#07080A;
+  --text:#F2F4F6;
+  --muted:#A7ADB4;
+  --glass: rgba(18,18,20,0.48);
+  --glass2: rgba(18,18,20,0.36);
+  --stroke: rgba(255,255,255,0.16);
+  --stroke2: rgba(255,255,255,0.10);
+  --shadow: 0 24px 70px rgba(0,0,0,0.55);
+  --radius: 26px;
+}
 
 *{box-sizing:border-box}
+html,body{height:100%}
 body{
   margin:0;
-  font-family:-apple-system,system-ui,Segoe UI,Roboto,Arial;
-  color:#F2F4F6;
-  background:#07080A;
+  background:var(--bg);
+  color:var(--text);
+  font-family: system-ui, Segoe UI, Roboto, Arial, sans-serif;
+  line-height:1.45;
 }
 
 .site{
   position:relative;
   min-height:100vh;
+  overflow:hidden;
 }
-
-/* ---------- FULL BACKGROUND FIX ---------- */
 
 .site::before{
   content:"";
   position:fixed;
   inset:0;
-  background:url("giulia_fullpage.png") center top / cover no-repeat;
+  background-image:url("./giulia_fullpage.png");
+  background-size:cover;
+  background-position:center center;
+  background-repeat:no-repeat;
+  filter:saturate(1.05) contrast(1.02);
+  opacity:0.55;
+  pointer-events:none;
   z-index:-2;
 }
 
@@ -36,243 +51,306 @@ body{
   content:"";
   position:fixed;
   inset:0;
-  background:radial-gradient(circle at 40% 20%, rgba(0,0,0,.2), rgba(0,0,0,.75));
+  background: radial-gradient(1200px 800px at 30% 20%, rgba(0,0,0,0.10), rgba(0,0,0,0.75));
+  pointer-events:none;
   z-index:-1;
 }
 
-/* ---------- LAYOUT ---------- */
-
 .container{
-  width:min(1300px,95%);
-  margin:auto;
+  width: calc(100% - 60px);
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-/* ---------- HERO ---------- */
-
 .hero{
-  padding:50px 0 40px;
+  padding:42px 0 34px;
 }
 
 .heroCard{
   display:grid;
-  grid-template-columns:140px 1fr;
-  gap:26px;
-  padding:32px;
+  grid-template-columns: 120px 1fr;
+  gap:22px;
+  padding:28px;
+  border-radius: var(--radius);
+  background: var(--glass);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--stroke);
+  box-shadow: var(--shadow);
+  position:relative;
+}
 
-  background:rgba(18,18,20,.55);
-  backdrop-filter:blur(18px);
-  border-radius:28px;
-  border:1px solid rgba(255,255,255,.15);
-  box-shadow:0 30px 80px rgba(0,0,0,.6);
+.heroCard::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, rgba(255,255,255,0.18), transparent 42%);
+  pointer-events:none;
 }
 
 .logoSlot{
-  width:140px;
-  height:140px;
-  border-radius:22px;
-  overflow:hidden;
+  width:120px;
+  height:120px;
+  border-radius: 22px;
+  border: 1px solid var(--stroke);
+  background: rgba(10,10,12,0.25);
   display:flex;
   align-items:center;
   justify-content:center;
-  background:rgba(0,0,0,.25);
+  overflow:hidden;
 }
 
-.logoSlot img{
+.logo{
   width:100%;
   height:100%;
   object-fit:contain;
-}
-
-/* ---------- BIG TITLE SIGN ---------- */
-
-.heroTitle{
-  width:100%;
-  max-width:1050px;
-}
-
-.heroTitle img{
-  width:100%;
-  height:auto;
   display:block;
-  filter:drop-shadow(0 20px 45px rgba(0,0,0,.65));
+}
+
+.kicker{
+  font-size:12px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.78);
+  margin:0 0 8px;
+}
+
+h1{
+  margin:0 0 12px;
+  font-size: clamp(26px, 3.6vw, 46px);
+  line-height:1.08;
 }
 
 .lead{
-  margin-top:14px;
-  max-width:70ch;
-  color:rgba(255,255,255,.85);
+  margin:0 0 18px;
+  color:rgba(255,255,255,0.84);
+  max-width: 72ch;
 }
 
-/* ---------- BUTTONS ---------- */
+.pills{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin: 0 0 18px;
+}
+
+.pill{
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid var(--stroke2);
+  background: rgba(12,12,14,0.22);
+  color:rgba(255,255,255,0.86);
+  font-size:13px;
+}
 
 .actions{
-  margin-top:18px;
   display:flex;
   gap:12px;
   flex-wrap:wrap;
 }
 
 .btn{
-  padding:10px 16px;
-  border-radius:12px;
-  border:1px solid rgba(255,255,255,.18);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px 14px;
+  border-radius: 12px;
+  border:1px solid var(--stroke);
+  background: rgba(12,12,14,0.30);
+  color:rgba(255,255,255,0.92);
   text-decoration:none;
-  color:white;
-  background:rgba(0,0,0,.35);
   font-weight:600;
+  font-size:14px;
 }
 
 .btn:hover{
-  background:rgba(0,0,0,.55);
+  background: rgba(12,12,14,0.42);
 }
 
-/* ---------- DIVIDER ---------- */
-
-.divider{
-  margin:40px auto;
-  border-radius:26px;
-  overflow:hidden;
-  border:1px solid rgba(255,255,255,.12);
+.section{
+  padding: 18px 0 44px;
 }
-
-.divider img{
-  width:100%;
-  height:220px;
-  object-fit:cover;
-}
-
-/* ---------- CARDS ---------- */
 
 .glassPanel{
-  padding:28px;
-  border-radius:28px;
-  background:rgba(18,18,20,.45);
-  backdrop-filter:blur(16px);
-  border:1px solid rgba(255,255,255,.12);
+  padding: 26px;
+  border-radius: var(--radius);
+  background: var(--glass2);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--stroke2);
+  box-shadow: 0 18px 56px rgba(0,0,0,0.45);
+  position:relative;
+}
+
+.glassPanel::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, rgba(255,255,255,0.14), transparent 45%);
+  pointer-events:none;
 }
 
 .grid3{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 980px){
+  .heroCard{grid-template-columns: 1fr; }
+  .logoSlot{width:110px; height:110px;}
+  .grid3{grid-template-columns: 1fr;}
 }
 
 .card{
-  border-radius:20px;
+  border-radius: 20px;
+  border: 1px solid var(--stroke2);
+  background: rgba(10,10,12,0.20);
   overflow:hidden;
-  background:rgba(0,0,0,.25);
-  border:1px solid rgba(255,255,255,.1);
+  display:flex;
+  flex-direction:column;
+  min-height: 260px;
 }
 
 .cardTop{
-  padding:14px;
+  padding: 14px 16px 10px;
   font-weight:800;
+  font-size:16px;
 }
 
 .cardImg{
-  height:180px;
-  background-size:cover;
-  background-position:center;
+  height: 150px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background-size: cover;
+  background-position: center;
 }
 
 .cardBody{
-  padding:14px;
+  padding: 12px 16px 16px;
+  color: rgba(255,255,255,0.80);
   font-size:14px;
-  color:rgba(255,255,255,.85);
 }
 
-/* ---------- MOBILE ---------- */
-
-@media(max-width:900px){
-  .heroCard{
-    grid-template-columns:1fr;
-  }
-
-  .grid3{
-    grid-template-columns:1fr;
-  }
+.divider{
+  width:100%;
+  border-radius: 26px;
+  border: 1px solid var(--stroke2);
+  background: rgba(10,10,12,0.18);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.35);
+  overflow:hidden;
+  margin: 22px 0 28px;
 }
 
+.divider img{
+  width:100%;
+  height:auto;
+  max-height:260px;
+  object-fit:contain;
+  display:block;
+}
+
+.footer{
+  padding: 26px 0 38px;
+  color: rgba(255,255,255,0.70);
+  font-size:13px;
+}
 </style>
 </head>
 
 <body>
-
 <div class="site">
 
-<header class="hero">
-<div class="container">
+  <header class="hero">
+    <div class="container">
+      <div class="heroCard">
+        <div class="logoSlot">
+          <img class="logo" src="./giulia_lego_logo.png" alt="Giulia Trust logo">
+        </div>
 
-<div class="heroCard">
+        <div>
+          <p class="kicker">Giulia Trust</p>
 
-<div class="logoSlot">
-<img src="giulia_lego_logo.png">
-</div>
+          <h1>Born from care, created by neurodivergence, for minds navigating a world not designed for them.</h1>
 
-<div>
+          <p class="lead">
+            Giulia Trust was created by a neurodivergent mind for neurodivergent minds, to help people who struggle in systems built for neurotypical patterns, and to cut through bureaucratic hurdles with clarity, dignity, and practical support.
+          </p>
 
-<div class="heroTitle">
-<img src="hero_title.png">
-</div>
+          <div class="pills">
+            <span class="pill">Accessibility first</span>
+            <span class="pill">Clear pathways</span>
+            <span class="pill">Human dignity</span>
+            <span class="pill">Advocacy that stays with you</span>
+          </div>
 
-<p class="lead">
-Giulia Trust was created by a neurodivergent mind for neurodivergent minds, helping people navigate systems not designed for them with clarity, dignity, and practical support.
-</p>
+          <div class="actions">
+            <a class="btn" href="mailto:info@giuliatrust.org">Email, info@giuliatrust.org</a>
+            <a class="btn" href="#blocks">Our blocks</a>
+          </div>
+        </div>
 
-<div class="actions">
-<a class="btn" href="mailto:info@giuliatrust.org">Email info@giuliatrust.org</a>
-<a class="btn" href="#blocks">Our blocks</a>
-</div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="divider">
+        <img src="./lego_rainbow.png" alt="Divider">
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="blocks">
+    <div class="container">
+      <div class="glassPanel">
+        <div class="grid3">
+
+          <article class="card">
+            <div class="cardTop">Accessibility</div>
+            <div class="cardImg" style="background-image:url('./lego_blue.png')"></div>
+            <div class="cardBody">
+              Clear routes through forms, processes, and language, so the path is visible, not a guessing game.
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="cardTop">Advocacy</div>
+            <div class="cardImg" style="background-image:url('./lego_red.png')"></div>
+            <div class="cardBody">
+              Standing beside people when the system becomes a wall, and pushing until it opens.
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="cardTop">Dignity</div>
+            <div class="cardImg" style="background-image:url('./lego_yellow.png')"></div>
+            <div class="cardBody">
+              Practical support that respects pace, sensory load, and the reality of living inside constant demands.
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="divider">
+        <img src="./lego_rainbow.png" alt="Divider">
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      Giulia Trust. Email only, please. Contact:
+      <a href="mailto:info@giuliatrust.org" style="color:rgba(255,255,255,0.90)">info@giuliatrust.org</a>
+    </div>
+  </footer>
 
 </div>
-</div>
-</div>
-</header>
-
-
-<div class="container">
-<div class="divider">
-<img src="lego_rainbow.png">
-</div>
-</div>
-
-
-<section id="blocks">
-<div class="container">
-<div class="glassPanel">
-
-<div class="grid3">
-
-<div class="card">
-<div class="cardTop">Accessibility</div>
-<div class="cardImg" style="background-image:url('lego_blue.png')"></div>
-<div class="cardBody">
-Clear routes through forms and systems so the path is visible, not a guessing game.
-</div>
-</div>
-
-<div class="card">
-<div class="cardTop">Advocacy</div>
-<div class="cardImg" style="background-image:url('lego_red.png')"></div>
-<div class="cardBody">
-Standing beside people when the system becomes a wall, and pushing until it opens.
-</div>
-</div>
-
-<div class="card">
-<div class="cardTop">Dignity</div>
-<div class="cardImg" style="background-image:url('lego_yellow.png')"></div>
-<div class="cardBody">
-Support that respects pace, sensory load, and real lived complexity.
-</div>
-</div>
-
-</div>
-</div>
-</div>
-</section>
-
-</div>
-
 </body>
 </html>
